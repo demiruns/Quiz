@@ -1,0 +1,21 @@
+h2{
+    text-align:center;
+}
+h4{
+    text-align:center;
+}
+.Face{
+    text-align:center;
+}
+body{
+    text-align:center;
+}
+.Buttons{
+    border-radius:20%;
+    margin-left:20px;
+    width:12vh;
+    height:5vh;
+    background-color: red;
+    color: white;
+
+}
