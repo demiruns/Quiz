@@ -4,18 +4,18 @@ var correct_answer = 0
 Question()
 
 function Shuffle(list){
-    for (var i in list){
-        randswap = Math.floor(Math.random() * list.length)
-        list[i],list[randswap]=list[randswap],list[i]
+    for (var i = list.length-1; i>=0; i=i-1){
+        randswap = Math.floor(Math.random() * list.length);
+        [list[i],list[randswap]]=[list[randswap],list[i]]
     }
+    return list
 }
 
 function Question(){
-    const answers = []
+    let answers = []
     randno1 = Math.floor(Math.random() * 4) + 5;
     randno2 = Math.floor(Math.random() * 4) + 2;
     randno = Math.floor(Math.random() * 4);
-    console.log(randno)
     if (signs[randno]=="-"){
         correct_answer=randno1 - randno2
     }
@@ -32,7 +32,7 @@ function Question(){
     answers.push(randno1 + randno2)
     answers.push(randno1 * randno2)
     answers.push(randno1 ** randno2)
-    Shuffle(answers)
+    answers=Shuffle(answers)
     console.log(answers)
     document.getElementById("No1").innerHTML = randno1;
     document.getElementById("No2").innerHTML = randno2;
@@ -44,6 +44,14 @@ function Question(){
 }
 
 function Button(answer){
-    
-    document.getElementById("Cscore").innerHTML=score
+    var value = document.getElementById("Button" + (answer + 1)).innerHTML;
+    if (Number(value) === correct_answer){
+        score=score+1;
+        Question()
     }
+    else if (Number(value) != correct_answer){
+        score=score-1;
+    }
+    document.getElementById("Cscore").innerHTML = score;
+    
+}
